@@ -19,10 +19,11 @@ public class GameHelper {
             for (int j = 1; j < field.length - 1; j++) {
                 int[] xy = {i, j};
                 try {
-                    if (field[i][j].isAlive) {
-                        System.out.printf("%3s", "[" + field[i][j].size + "]");
-                    } else
-                        System.out.printf("%3s", "[X]");
+                   if (!(field[i][j].checkCoords(xy))) {
+                       System.out.printf("%3s", "[X]");
+                   }
+                   else
+                       System.out.printf("%3s", "[" + field[i][j].size + "]");
                 }
                 catch (NullPointerException e ){
                     System.out.printf("%3s", "[ ]");
