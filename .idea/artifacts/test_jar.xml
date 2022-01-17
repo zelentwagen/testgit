@@ -1,12 +1,10 @@
 <component name="ArtifactManager">
-  <artifact type="apk" name="test:jar">
+  <artifact type="jar" name="test:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/test_jar</output-path>
-    <properties id="android-properties">
-      <options>
-        <option name="keyStoreUrl" value="file://" />
-      </options>
+    <properties id="ant-postprocessing">
+      <options enabled="true" />
     </properties>
-    <root id="archive" name="test_jar.apk">
+    <root id="archive" name="test_jar.jar">
       <element id="module-output" name="test" />
     </root>
   </artifact>
