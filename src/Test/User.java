@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class User {
 
-    public static int[] shot() {
+    public static int[] shot(String[][] battleField) {
         Scanner scanner = new Scanner(System.in);
         int[] coords = new int[2];
         int c = 1;
@@ -29,6 +29,11 @@ public class User {
             else c = 0;
         }
         GameHelper.playerHistory.add(coords);
+        if (GameHelper.enemyField[coords[0]][coords[1]] == null){
+            battleField[coords[0]][coords[1]] = "0";
+        }
+
+
         return coords;
 
     }

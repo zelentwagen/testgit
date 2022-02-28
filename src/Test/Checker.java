@@ -8,19 +8,19 @@ public class Checker {
 
 
         if (field[coords[0]][coords[1]] == null) {
-            System.out.println("Мимо");
+            System.out.println(Arrays.toString(coords) + " Мимо");
             //return "Мимо";
         }
         else if (field[coords[0]][coords[1]] != null) {
             field[coords[0]][coords[1]].hurt(coords);
             if (field[coords[0]][coords[1]].parts < 1) {
-                System.out.println("Потопил");
+                System.out.println(Arrays.toString(coords) + " Потопил");
                 //return "Потопил";
                 field[coords[0]][coords[1]].isAlive = false;
 
             }
             else {
-                System.out.println("Ранил");
+                System.out.println(Arrays.toString(coords) + " Ранил");
                 //return "Ранил";
             }
         }
@@ -29,14 +29,21 @@ public class Checker {
     }
 
 
-    public static boolean checkField(Ship[][] field) {
+    public static boolean checkField(Ship[][] field1, Ship [][]field2) {
+        boolean field1IsNotEmpty = true;
+        boolean field2IsNotEmpty = true;
         boolean isNotEmpty = true;
-        for (Ship[] cells : field) {
+        for (Ship[] cells : field1) {
             for (Ship cell : cells) {
-                isNotEmpty = cell == null || cell.isAlive;
+                field1IsNotEmpty = cell == null || cell.isAlive;
             }
         }
-        return isNotEmpty;
+        for (Ship[] cells : field2) {
+            for (Ship cell : cells) {
+                field2IsNotEmpty = cell == null || cell.isAlive;
+            }
+        }
+        return isNotEmpty = field1IsNotEmpty && field2IsNotEmpty;
     }
 
 }

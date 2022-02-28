@@ -5,14 +5,13 @@ import java.util.Arrays;
 public class Ai {
 
 
-    public static int[] aIShot() {
-        int x = (int) (1 + (Math.random() * 11));
-        int y = (int) (1 + (Math.random() * 11));
+    public static int[] aiShot() {
+        int x = (int) (1 + (Math.random() * 10));
+        int y = (int) (1 + (Math.random() * 10));
         int[] coords = {x, y};
         while (checkRepeat(coords)){
-           // x = (int) (1 + (Math.random() * 11));
-           // y = (int) (1 + (Math.random() * 11));
-            aIShot();
+           x = (int) (1 + (Math.random() * 10));
+           y = (int) (1 + (Math.random() * 10));
         }
         GameHelper.aiHistory.add(coords);
         return coords;
@@ -28,8 +27,8 @@ public class Ai {
                     int c = 1;
                     while (c > 0) {
                         try {
-                            putAiShip(field, ship);
-                            System.out.println();
+                            autoSpawnShip(field, ship);
+                            //System.out.println();
                             c--;
                         } catch (ArrayIndexOutOfBoundsException e) {
                             c = 1;
@@ -40,8 +39,8 @@ public class Ai {
                     int d = 1;
                     while (d > 0) {
                         try {
-                            putAiShip(field, ship);
-                            System.out.println();
+                            autoSpawnShip(field, ship);
+                            //System.out.println();
                             d--;
                         } catch (ArrayIndexOutOfBoundsException e) {
                             d = 1;
@@ -53,7 +52,7 @@ public class Ai {
         }
     }
 
-    public static void putAiShip(Ship[][] field, Ship ship) {
+    public static void autoSpawnShip(Ship[][] field, Ship ship) {
 
 
         int numX = (int) (Math.random() * 12);
@@ -68,11 +67,11 @@ public class Ai {
                                 & field[numX + 1][numY] == (null)
                                 & field[numX][numY + 1] == (null)
                                 & field[numX][numY - 1] == (null)) {
-                            System.out.println(numX + " " + numY + " свободно");
+                            //System.out.println(numX + " " + numY + " свободно");
                             numX++;
 
                         } else {
-                            System.out.println(numX + " " + numY + " пробуем другую клетку");
+                            //System.out.println(numX + " " + numY + " пробуем другую клетку");
                             i = -1;
                             numX = (int) (Math.random() * 12);
                             numY = (int) (Math.random() * 12);
@@ -82,12 +81,12 @@ public class Ai {
                     for (int k = 0; k < ship.size; k++) {
                         field[--numX][numY] = ship;
                         field[numX][numY].setCoords(numX, numY);
-                        System.out.println(numX + " " + numY + " Ставлю корабль");
+                        //System.out.println(numX + " " + numY + " Ставлю корабль");
 
                     }
                     c--;
                 } catch (ArrayIndexOutOfBoundsException e) {
-                    System.out.println(numX + " " + numY + " пробуем другую клетку");
+                    //System.out.println(numX + " " + numY + " пробуем другую клетку");
                     c = 1;
                     numX = (int) (Math.random() * 12);
                     numY = (int) (Math.random() * 12);
@@ -104,10 +103,10 @@ public class Ai {
                                 & field[numX + 1][numY] == (null)
                                 & field[numX][numY + 1] == (null)
                                 & field[numX][numY - 1] == (null)) {
-                            System.out.println(numX + " " + numY + " свободно");
+                            //System.out.println(numX + " " + numY + " свободно");
                             numY++;
                         } else {
-                            System.out.println(numX + " " + numY + " пробуем другую клетку");
+                            //System.out.println(numX + " " + numY + " пробуем другую клетку");
                             i = -1;
                             numX = (int) (Math.random() * 12);
                             numY = (int) (Math.random() * 12);
@@ -117,11 +116,11 @@ public class Ai {
                     for (int k = 0; k < ship.size; k++) {
                         field[numX][--numY] = ship;
                         field[numX][numY].setCoords(numX, numY);
-                        System.out.println(numX + " " + numY + " Ставлю корабль");
+                        //System.out.println(numX + " " + numY + " Ставлю корабль");
                     }
                     c--;
                 } catch (ArrayIndexOutOfBoundsException e) {
-                    System.out.println(numX + " " + numY + " пробуем другую клетку");
+                    //System.out.println(numX + " " + numY + " пробуем другую клетку");
                     c = 1;
                     numX = (int) (Math.random() * 12);
                     numY = (int) (Math.random() * 12);
